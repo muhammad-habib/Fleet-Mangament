@@ -27,7 +27,7 @@ services:
     restart: unless-stopped
     tty: true
     ports:
-      - "80:80"
+      - "8000:80"
       - "443:443"
     volumes:
       - ./:/var/www
@@ -43,7 +43,7 @@ services:
     restart: unless-stopped
     tty: true
     ports:
-      - "3306:3306"
+      - "33063:33063"
     environment:
       MYSQL_DATABASE: fleet_managment
       MYSQL_ROOT_PASSWORD: root
