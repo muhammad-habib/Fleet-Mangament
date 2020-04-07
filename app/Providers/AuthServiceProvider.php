@@ -27,8 +27,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
         Passport::routes();
-        $personalClientId = Client::query()->where('name', 'personal')->first();
-        Passport::personalAccessClientId($personalClientId->id);
+        Passport::personalAccessClientId(1);
         Passport::personalAccessTokensExpireIn(now()->addMonths(6));
     }
 }
