@@ -24,7 +24,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        dd(Auth::user()->createToken('Personal')->accessToken);
         return view('home');
     }
 }

@@ -13,20 +13,10 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-//
-//Route::middleware('auth:api')->get('/user', function (Request $request) {
-//
-//    return $request->user();
-//});
 
+Route::post('login', 'AuthController@login');
 
-Route::get('/user', function () {
-    dd(\Illuminate\Support\Facades\Auth::user());
-})->middleware('jwt.auth:api');
-
-
-Route::get('/', function()
-{
-    $user = \App\User::query()->find(1);
-    dd($user->createToken('Personal')->accessToken);
+Route::middleware('auth:api')->group(function () {
+    Route::get('available-seats', 'SeatsController@listAvailableSeats');
+    Route::post('book-seat', 'SeatsController@bookSeat');
 });
